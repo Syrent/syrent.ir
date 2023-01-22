@@ -1,91 +1,72 @@
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from './page.module.css'
+import Card from "@/app/card/Card";
+import { FiGithub } from "react-icons/fi";
+import {Octokit} from "@octokit/core";
+import {Suspense} from "react";
+import CardLoading from "@/app/card/CardLoading";
+import logo from "@/public/logo.png";
+import Image from "next/image";
 
-const inter = Inter({ subsets: ['latin'] })
+export default async function Home() {
+    return (
+        <main className="w-full fixed">
+            <div className="blur-[1px] cards grid sm:grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-1">
+                <Suspense fallback={<CardLoading />}>
+                    <Cards />
+                </Suspense>
+            </div>
+            <div className="w-[100vw] h-[100vh] bg-black absolute top-0 left-0 opacity-50 pointer-events-none">
+            </div>
+            <div className="w-[100vw] h-[100vh] absolute top-0 left-0 pointer-events-none">
+                <div className="relative flex gap-12 justify-center items-center h-[100vh]">
+                    <Image src={logo} alt="logo" />
+                </div>
+            </div>
+        </main>
+    )
+}
 
-export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+export type Repository = {
+    id: number,
+    name: string,
+    description: string,
+    fork: boolean,
+    owner: {
+        login: string,
+        avatar_url: string,
+        url: string,
+        html_url: string
+    },
+    language: string,
+    has_wiki: boolean,
+    has_downloads: boolean,
+    forks_count: number,
+    stargazers_count: number,
+    watchers_count: number
+}
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
-      </div>
+async function Cards() {
+    const octokit = new Octokit({
+        auth: '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'
+    });
 
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+    const repositories = await octokit.request('GET /users/{username}/repos{?type,sort,direction,per_page,page}', {
+        username: 'Syrent'
+    })
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
+    const data = repositories.data as Repository[];
+    data.sort(() => Math.random() - 0.5);
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    return (
+        <>
+            {
+                data/*.filter(repo => !repo.fork)*/.map(repo =>
+                    <Card
+                        key={repo.id}
+                        icon={FiGithub}
+                        repository={repo}
+                    />
+                )
+            }
+        </>
+    )
 }
