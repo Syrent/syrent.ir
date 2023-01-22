@@ -5,6 +5,7 @@ import {Suspense} from "react";
 import CardLoading from "@/app/card/CardLoading";
 import logo from "@/public/logo.png";
 import Image from "next/image";
+import * as process from "process";
 
 export default async function Home() {
     return (
@@ -46,7 +47,7 @@ export type Repository = {
 
 async function Cards() {
     const octokit = new Octokit({
-        auth: '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'
+        auth: process.env.GITHUB_TOKEN
     });
 
     const repositories = await octokit.request('GET /users/{username}/repos{?type,sort,direction,per_page,page}', {
