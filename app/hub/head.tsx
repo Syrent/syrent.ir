@@ -1,9 +1,9 @@
 export default function Head() {
   return (
     <>
-      <title>Login</title>
+      <title>Hub</title>
       <meta content="width=device-width, initial-scale=1" name="viewport" />
-      <meta name="description" content="Administration panel login page" />
+      <meta name="description" content="Syrent's personal website hub page" />
       <link rel="icon" href="/favicon.ico" />
     </>
   )

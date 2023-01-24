@@ -14,7 +14,6 @@ type CardDataProps = {
 }
 
 export default function Card(props: CardProps) {
-
     return (
         <Link target="_blank" className={`flex flex-col gap-5 rounded-2xl bg-gray-50 shadow-sm hover:shadow-md transition-all m-2 p-6 row-span-1 cursor-pointer col-span-4 h-45`} href={`https://github.com/Syrent/${props.repository.name}`}>
             <div className="flex flex-row gap-5 items-center">
