@@ -3,7 +3,7 @@
 import logo from "@/public/s-logo.png"
 import Image from "next/image";
 import Link from "next/link";
-import {BiHomeAlt, CgClose, DiGithubAlt, FiBox, GiHamburgerMenu, GrClose} from "react-icons/all";
+import {BiBook, BiHomeAlt, CgClose, DiGithubAlt, FiBox, GiHamburgerMenu, GrClose} from "react-icons/all";
 import {useState} from "react";
 
 export default function Header() {
@@ -47,6 +47,14 @@ export default function Header() {
                             <FiBox />
                             <span>Modrinth</span>
                         </Link>
+                        <Link
+                            className="flex flex-row items-center gap-2 hover:text-gray-300 transition-color duration-200"
+                            href={"https://hyperlearning.ir/"}
+                            target="_blank"
+                        >
+                            <BiBook />
+                            <span>Hyperlearning</span>
+                        </Link>
                     </div>
                 </div>
                 <Link
@@ -83,6 +91,14 @@ export default function Header() {
                     >
                         <FiBox />
                         <span>Modrinth</span>
+                    </Link>
+                    <Link
+                        className="flex flex-row items-center gap-2 hover:text-gray-300 transition-color duration-200"
+                        href={"https://hyperlearning.ir/"}
+                        target="_blank"
+                    >
+                        <BiBook />
+                        <span>Hyperlearning</span>
                     </Link>
                 </div>
             </div>
