@@ -8,7 +8,6 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <head />
             <body className="bg-auto 2xl:bg-cover bg-no-repeat" style={{backgroundImage: `url(${loginBg.src})`}}>
                 <Header />
                 {children}
