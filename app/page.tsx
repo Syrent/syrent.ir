@@ -2,11 +2,11 @@
 
 import {FiLogIn} from "react-icons/fi";
 import {useEffect, useState} from "react";
-import CardLoading from "@/app/components/card/CardLoading";
+import CardLoading from "@/app/card/CardLoading";
 import logo from "@/public/logo.png";
 import Image from "next/image";
 import Link from "next/link";
-import Cards from "@/app/components/card/Cards"
+import Cards from "@/app/card/Cards"
 import {BiMoon, BiSun} from "react-icons/all";
 
 export default function Home() {

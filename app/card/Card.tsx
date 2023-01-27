@@ -1,6 +1,6 @@
 import {IconType} from "react-icons";
 import Link from "next/link";
-import { Repository } from "@/app/components/card/Cards";
+import { Repository } from "@/app/card/Cards";
 import {BiGitRepoForked, FiStar, MdLanguage} from "react-icons/all";
 
 type CardProps = {

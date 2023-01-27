@@ -1,4 +1,4 @@
-import Header from "@/app/components/Header";
+import Header from "@/app/Header";
 import loginBg from "@/public/login-bg.png";
 
 export default function RootLayout({

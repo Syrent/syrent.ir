@@ -25,7 +25,9 @@ export default function Login() {
                         return errors
                     }}
                     onSubmit={(values, { setSubmitting }) => {
+                        console.log("test")
                         setTimeout(() => {
+                            console.log("test2")
                             alert(JSON.stringify(values, null, 2));
                             setSubmitting(false);
                         }, 400)

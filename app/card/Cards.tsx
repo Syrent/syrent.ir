@@ -1,4 +1,4 @@
-import Card from "@/app/components/card/Card";
+import Card from "@/app/card/Card";
 import {FiGithub} from "react-icons/fi";
 import {Octokit} from "@octokit/core";
 
