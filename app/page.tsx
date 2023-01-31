@@ -33,11 +33,11 @@ export default function Home() {
                 <BiMoon onClick={() => {
                     setTheme("dark")
                     localStorage.theme = 'dark'
-                }} className={`${theme == 'dark' ? "hidden" : "block"} text-white p-2 w-16 h-16 bg-gray-700 transition-all duration-150 rounded-full pointer-events-auto cursor-pointer hover:bg-gray-900 absolute right-0 mr-10 mt-10`} />
+                }} className={`${theme == 'dark' ? "hidden" : "block"} text-white p-2 w-16 h-16 bg-gray-700 transition-all duration-150 rounded-full pointer-events-auto cursor-pointer hover:bg-gray-800 absolute right-0 mr-10 mt-10`} />
                 <BiSun onClick={() => {
                     setTheme("white")
                     localStorage.theme = 'white'
-                }} className={`${theme == 'white' ? "hidden" : "block"} text-gold p-2 w-16 h-16 bg-white transition-all duration-150 rounded-full pointer-events-auto cursor-pointer text-black hover:bg-gray-50 absolute right-0 mr-10 mt-10`} />
+                }} className={`${theme == 'white' ? "hidden" : "block"} text-gold p-2 w-16 h-16 bg-white transition-all duration-150 rounded-full pointer-events-auto cursor-pointer text-black hover:bg-gray-100 absolute right-0 mr-10 mt-10`} />
                 <div className="relative flex flex-col gap-12 justify-center items-center h-screen">
                     <Image className="pointer-events-auto" src={logo} alt="logo" />
                     <Link className="pointer-events-auto flex flex-row justify-center items-center gap-5 transition-shadow duration-100 text-black dark:text-white bg-blue-300 dark:bg-blue-500 hover:shadow-xl px-4 py-6 rounded-xl" href="hub">
