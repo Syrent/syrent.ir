@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "turbo": "next dev --turbo"
+    "turbo": "next dev --turbo --show-all"
   },
   "dependencies": {
     "@next/font": "13.1.4",

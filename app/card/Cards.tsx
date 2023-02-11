@@ -23,7 +23,15 @@ export default async function Cards() {
                         icon={FiGithub}
                         repository={repo}
                     />
-                )
+                ).sort((a, b) => {
+                    if (a.props.repository.fork && !b.props.repository.fork) {
+                        return 1;
+                    } else if (!a.props.repository.fork && b.props.repository.fork) {
+                        return -1;
+                    } else {
+                        return 0;
+                    }
+                })
             }
         </>
     )

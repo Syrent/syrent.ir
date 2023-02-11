@@ -10,19 +10,19 @@ import Cards from "@/app/card/Cards"
 import {BiMoon, BiSun} from "react-icons/all";
 
 export default function Home() {
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark')
-    } else {
-        document.documentElement.classList.remove('dark')
-    }
-
+    const [theme, setTheme] = useState("dark")
     const [cards, setCards] = useState(<CardLoading />)
-    const [theme, setTheme] = useState(localStorage.theme || "dark")
 
     useEffect(() => {
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+        setTheme(localStorage.theme)
+
         Cards().then(cardsComponent => setCards(cardsComponent))
-        // setTheme(localStorage.theme)
-    }, [])
+    }, [theme])
 
     return (
         <main className="w-full fixed dark:bg-gray-900 select-none">
