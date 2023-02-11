@@ -8,7 +8,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body className="bg-auto 2xl:bg-cover bg-no-repeat" style={{backgroundImage: `url(${loginBg.src})`}}>
+            <body className="bg-gray-900 bg-auto 2xl:bg-cover bg-no-repeat" style={{backgroundImage: `url(${loginBg.src})`}}>
                 <Header />
                 {children}
             </body>
